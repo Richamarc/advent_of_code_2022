@@ -50,9 +50,7 @@ const pointGuide = {
 const checkOutcome = (opponent, you) => {
     const oppD = translateOpp[opponent];
     const yourD = translateYour[you][oppD];
-    if (oppD) {
-        return decisionGuide[yourD][oppD] + pointGuide[yourD];
-    }
+    return decisionGuide[yourD][oppD] + pointGuide[yourD];
 }
 
 // 
@@ -61,13 +59,8 @@ const checkOutcome = (opponent, you) => {
 
 let totalScore = 0;
 const strategyArray = dataString.split('\n');
-strategyArray.forEach((play, i) => {
-    const oppDecision = play.slice(0,1);
-    const yourDecision = play.slice(-1);
-    if (oppDecision) {
-        const outcomeValue = checkOutcome(oppDecision, yourDecision);
-        totalScore = totalScore + outcomeValue;
-    }
-    
-})
+for (const play of strategyArray) {
+    const [oppDecision, yourDecision] = play.split(" ");
+    totalScore += checkOutcome(oppDecision, yourDecision);
+}
 console.log(totalScore);
