@@ -12,17 +12,6 @@ const dataString = fs.readFileSync(filename, 'utf8', function(err, data) {
 });
 
 // 
-// test arguments
-// 
-
-testGuide = `
-A Y
-B X
-C Z`;
-
-testOutcome = 15;
-
-// 
 // function section
 // consider the guide a recommendation of strategy, and each row is a play.
 // opponent decision is A for Rock, B for Paper, and C for Scissors
